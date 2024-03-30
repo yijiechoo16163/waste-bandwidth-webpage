@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bandwidth Test</title>
+    <script>
+        var totalBytes = 0;
+        var startTime = Date.now();
+        var imageUrl = "1mb.jpg"; // replace with your image URL
+
+        function loadImage() {
+            var img = new Image();
+            img.onload = function() {
+                totalBytes += 1 * 1024 * 1024; // assuming image is 1MB
+                var elapsedSeconds = (Date.now() - startTime) / 1000;
+                var bandwidthUsedMB = totalBytes / (1024 * 1024);
+                var bandwidthRateMbps = (totalBytes * 8 / elapsedSeconds) / (1024 * 1024);
+                document.getElementById('bandwidthUsed').textContent = bandwidthUsedMB.toFixed(2) + " MB";
+                document.getElementById('bandwidthRate').textContent = bandwidthRateMbps.toFixed(2) + " Mbps";
+                loadImage(); // load the image again
+            };
+            img.src = imageUrl + "?t=" + new Date().getTime(); // append unique query parameter
+        }
+
+        window.onload = function() {
+            loadImage();
+            loadImage();
+        };
+    </script>
+</head>
+<body>
+    <h1>Bandwidth Test</h1>
+    <p>Bandwidth used: <span id="bandwidthUsed">0 MB</span></p>
+    <p>Bandwidth rate: <span id="bandwidthRate">0 Mbps</span></p>
+</body>
+</html>

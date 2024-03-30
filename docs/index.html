@@ -5,20 +5,20 @@
     <script>
         var totalBytes = 0;
         var startTime = Date.now();
-        var imageUrl = "1mb.jpg"; // replace with your image URL
+        var imageUrl = "1mb.jpg"; 
 
         function loadImage() {
             var img = new Image();
             img.onload = function() {
-                totalBytes += 1 * 1024 * 1024; // assuming image is 1MB
+                totalBytes += 1 * 1024 * 1024; 
                 var elapsedSeconds = (Date.now() - startTime) / 1000;
                 var bandwidthUsedMB = totalBytes / (1024 * 1024);
                 var bandwidthRateMbps = (totalBytes * 8 / elapsedSeconds) / (1024 * 1024);
                 document.getElementById('bandwidthUsed').textContent = bandwidthUsedMB.toFixed(2) + " MB";
                 document.getElementById('bandwidthRate').textContent = bandwidthRateMbps.toFixed(2) + " Mbps";
-                loadImage(); // load the image again
+                loadImage(); 
             };
-            img.src = imageUrl + "?t=" + new Date().getTime(); // append unique query parameter
+            img.src = imageUrl + "?t=" + new Date().getTime(); 
         }
 
         window.onload = function() {

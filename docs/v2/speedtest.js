@@ -1,5 +1,7 @@
 async function downloadFile(url, size) {
     const startTime = performance.now();
+    // Add cache-busting query parameter
+    url += (url.includes('?') ? '&' : '?') + 'cache-bust=' + Date.now();
     const response = await fetch(url);
     const blob = await response.blob();
     const endTime = performance.now();

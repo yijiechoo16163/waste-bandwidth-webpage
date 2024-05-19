@@ -14,11 +14,11 @@ async function downloadFile(url, size) {
 async function startTest() {
     const speedElement = document.getElementById('speed');
     const testFiles = [
-        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile1', size: 1 * 1024 * 1024 }, // 1MB
-        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile2', size: 2 * 1024 * 1024 }, // 2MB
-        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile5', size: 5 * 1024 * 1024 }, // 5MB
-        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile10', size: 10 * 1024 * 1024 }, // 10MB
-        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile20', size: 20 * 1024 * 1024 }, // 20MB
+        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile1.bin', size: 1 * 1024 * 1024 }, // 1MB
+        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile2.bin', size: 2 * 1024 * 1024 }, // 2MB
+        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile5.bin', size: 5 * 1024 * 1024 }, // 5MB
+        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile10.bin', size: 10 * 1024 * 1024 }, // 10MB
+        { url: 'https://waste-bandwidth-webpage.chooyijie.com/testfile20.bin', size: 20 * 1024 * 1024 }, // 20MB
 
     ];
     

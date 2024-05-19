@@ -1,0 +1,26 @@
+<div id="content-wrapper">
+    <div class="inner clearfix">
+      <section id="main-content">
+        <h1>Visit this page to waste some bandwidth</h1>
+
+<p>Just sit on this page to waste bandwidth.</p>
+
+<p>Bandwidth wasted:  <b><span id="bwused">0</span> megabytes.</b></p>
+
+<p>Rate of waste:  <b><span id="bwrate">0</span> Mbps.</b></p>
+
+<p>Close this window to stop wasting bandwidth.</p>
+
+<script>
+function nextImage() {
+  var a = (new Image());
+  a.src="https://waste-bandwidth-webpage.chooyijie.com/1mb.jpg?foo="+Math.random();
+  a.onload = () => window.nextImage();
+  imgcount = parseFloat(window.bwused.innerText);
+  window.bwused.innerText = imgcount+1;
+  window.bwrate.innerText = (imgcount*8e3/(Date.now()-startTime)).toPrecision(2);
+
+}
+startTime = Date.now();
+nextImage();nextImage();
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bandwidth Wasting (Slow)</title>
+    <script>
+        var totalBytes = 0;
+        var startTime = Date.now();
+        var imageUrl = "1mb.jpg"; 
+
+        function loadImage() {
+            var img = new Image();
+            img.onload = function() {
+                totalBytes += 1 * 1024 * 1024; 
+                var elapsedSeconds = (Date.now() - startTime) / 1000;
+                var bandwidthUsedMB = totalBytes / (1024 * 1024);
+                var bandwidthRateMbps = (totalBytes * 8 / elapsedSeconds) / (1024 * 1024);
+                document.getElementById('bandwidthUsed').textContent = bandwidthUsedMB.toFixed(2) + " MB";
+                document.getElementById('bandwidthRate').textContent = bandwidthRateMbps.toFixed(2) + " Mbps";
+                loadImage(); 
+            };
+            img.src = imageUrl + "?t=" + new Date().getTime(); 
+        }
+
+        window.onload = function() {
+            loadImage();
+        };
+    </script>
+</head>
+<body>
+    <h1>Bandwidth Wasting Machine</h1>
+    <p>Bandwidth wasted: <span id="bandwidthUsed">0 MB</span></p>
+    <p>Bandwidth wasting rate: <span id="bandwidthRate">0 Mbps</span></p>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1e7c8896dd894e0c8decd5b5f84b2380"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

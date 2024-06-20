@@ -25,7 +25,7 @@
                 var bandwidthRateMbps = (totalBytes * 8 / elapsedSeconds) / (1024 * 1024);
                 document.getElementById('bandwidthUsed').textContent = bandwidthUsedMB.toFixed(2) + " MB";
                 document.getElementById('bandwidthRate').textContent = bandwidthRateMbps.toFixed(2) + " Mbps";
-                loadImage(); 
+//                loadImage(); 
             };
             img.src = imageUrl + "?t=" + new Date().getTime(); 
         }

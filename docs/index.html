@@ -28,24 +28,39 @@
                 loadImage(); 
             };
             img.src = imageUrl + "?t=" + new Date().getTime(); 
+        }
+
+        function sendStats() {
             gtag('event', 'down1mb_pages', {
               'down1mb_pages': '1',
             });
         }
-
+        
         window.onload = function() {
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
             loadImage();
+            sendStats();
         };
     </script>
 </head>

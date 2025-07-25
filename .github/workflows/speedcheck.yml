@@ -1,0 +1,17 @@
+name: Stress Test Server
+
+on:
+  workflow_dispatch  # manual trigger
+
+jobs:
+  stress-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        worker: [1, 2, 3, 4, 5]  # 5 parallel downloads
+    steps:
+      - name: Worker ${{ matrix.worker }}
+        run: |
+          for i in {1..5000}; do
+            curl -o /dev/null -s -w "Worker ${{ matrix.worker }} | #%{time_total}s\n" https://waste-bandwidth-webpage.chooyijie.com/v2/testfile20.bin || echo "Failed"
+          done

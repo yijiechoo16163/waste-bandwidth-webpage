@@ -6,12 +6,22 @@ on:
 jobs:
   stress-test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        worker: [1, 2, 3, 4, 5]  # 5 parallel downloads
     steps:
-      - name: Worker ${{ matrix.worker }}
+      - name: Start 10 parallel threads, each downloading 5000 times
         run: |
-          for i in {1..5000}; do
-            curl -o /dev/null -s -w "Worker ${{ matrix.worker }} | #%{time_total}s\n" https://waste-bandwidth-webpage.chooyijie.com/v2/testfile20.bin || echo "Failed"
+          URL="https://your-server.com/20MB.bin"
+          THREADS=10
+          REPEATS=5000
+
+          for i in $(seq 1 $THREADS); do
+            echo "Thread $i started"
+            (
+              for j in $(seq 1 $REPEATS); do
+                wget -O /dev/null -q "$URL" || echo "Thread $i - Failed at attempt $j"
+              done
+              echo "Thread $i completed"
+            ) &
           done
+
+          wait
+          echo "All threads finished"

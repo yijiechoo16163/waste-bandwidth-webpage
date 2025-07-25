@@ -10,7 +10,7 @@ jobs:
       - name: Start 10 parallel threads, each downloading 5000 times
         run: |
           URL="https://your-server.com/20MB.bin"
-          THREADS=10
+          THREADS=4
           REPEATS=5000
 
           for i in $(seq 1 $THREADS); do
